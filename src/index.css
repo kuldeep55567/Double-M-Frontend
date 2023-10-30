@@ -217,6 +217,14 @@ border-radius: 5px
   font-size: 2rem;
   text-align: center;
 }
+#admin{
+  background-color: rgb(207, 207, 15);
+  border-radius: 10px;
+  position: relative; 
+  right: 4px; 
+  top: 15px;
+  color: white;
+}
 @media (max-width: 770px) {
   #container {
     grid-template-columns: 1fr;

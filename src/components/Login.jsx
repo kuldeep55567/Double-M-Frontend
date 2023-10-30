@@ -30,6 +30,7 @@ const Login = () => {
           localStorage.setItem('token', response.data.token);
           localStorage.setItem('name', response.data.name);
           localStorage.setItem('userID', response.data.id);
+          localStorage.setItem('role', response.data.role);
           setModalMessage('Logged in successfully');
           setShowModal(true);
           setLoggedIn(true);

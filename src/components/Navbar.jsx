@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Don't forget to import useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import { close, logo, menu } from "../../src/assets";
 import { mm, mlogo } from "../assets/index";
 import { navLinks } from "../constants/index";
@@ -14,9 +14,9 @@ const Navbar = () => {
   useEffect(() => {
     const storedName = localStorage.getItem('name');
     const storedId = localStorage.getItem('userID');
-
     console.log('Stored Name:', storedName);
     console.log('Stored ID:', storedId);
+    
     if (storedName && storedId) {
       setUserName(storedName);
       
@@ -31,14 +31,26 @@ const Navbar = () => {
       });
       setModifiedNavLinks(updatedNavLinks);
     }
+
+    const storedRole = localStorage.getItem('role'); // Define storedRole here
+
+    // Check if the user's role is 'admin' and render the Admin Panel link accordingly
+    if (storedRole === 'admin') {
+      setModifiedNavLinks(prevNavLinks => [
+        ...prevNavLinks,
+        {
+          id: "adminPanel",
+          title: "Admin",
+        },
+      ]);
+    }
   }, [isLoggedIn]);
 
-  // console.log('UserName:', userName);
-  // console.log('Modified Nav Links:', modifiedNavLinks);
   const logout = () => {
     localStorage.removeItem('name');
     localStorage.removeItem('userID');
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     setUserName("");
     setIsLoggedIn(false);
     navigate("/"); // Reload the page to reflect the changes
@@ -58,9 +70,20 @@ const Navbar = () => {
             } ${index === modifiedNavLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.title)}
           >
-            <Link to={`/${nav.id}`}>{nav.title}</Link>
-          </li>
-        ))}
+             <Link to={`/${nav.id}`}>
+            {nav.title === "Admin" ? (
+              <span
+                className="bg-yellow-500 rounded-md px-4 py-2"
+                style={{ padding: "4px 12px" }}
+              >
+                {nav.title}
+              </span>
+            ) : (
+              nav.title
+            )}
+          </Link>
+        </li>
+      ))}
         {userName && (
           <li
             className="font-poppins font-normal cursor-pointer text-red-500 pl-6"
@@ -93,7 +116,15 @@ const Navbar = () => {
                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.title)}
               >
-                <Link to={`/${nav.id}`}>{nav.title}</Link>
+               <Link to={`/${nav.id}`}>
+                  {nav.title === "Admin" ? (
+                    <span className="px-2 py-1" id="admin">
+                      {nav.title} 
+                    </span>
+                  ) : (
+                    nav.title
+                  )}
+                </Link>
               </li>
             ))}
             {userName && (
