@@ -30,7 +30,7 @@ console.log(userId);
 
   if (!userData) {
     console.log('User data is null. Loading...');
-    return <div className="bg-black text-white p-4">Loading...</div>;
+    return <div className="bg-black text-white p-4" id='loads'>Loading...</div>;
   }
 
   console.log('Rendering user data:', userData);

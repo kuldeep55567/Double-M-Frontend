@@ -217,7 +217,7 @@ function CompleteProfile() {
                   <option value="IGL">IGL</option>
                   <option value="Rusher">Rusher</option>
                   <option value="Nader">Nader</option>
-                  <option value="Nader">Assaulter</option>
+                  <option value="Assaulter">Assaulter</option>
                   <option value="Camper">Camper</option>
                 </select>
               </div>

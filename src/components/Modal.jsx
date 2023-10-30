@@ -1,8 +1,12 @@
-// Modal.js
 import React from 'react';
 import { AiOutlineCloseCircle } from "react-icons/ai";
-const Modal = ({ title, content, showModal, setShowModal, allowCancel = true }) => {
+const Modal = ({ title, content, showModal, setShowModal,mode, allowCancel = true }) => {
   if (!showModal) return null;
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  
   return (
     <div className="fixed z-50 inset-0 flex items-center justify-center">
       <div className="absolute w-full h-full bg-black opacity-50"></div>
@@ -20,6 +24,7 @@ const Modal = ({ title, content, showModal, setShowModal, allowCancel = true }) 
         </div>
         <p className="text-white">{content}</p>
       </div>
+      
     </div>
   );
 };

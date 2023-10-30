@@ -212,6 +212,11 @@ border-radius: 5px
   font-size: 1.2rem;
   margin-top: 10px;
 }
+
+#loads{
+  font-size: 2rem;
+  text-align: center;
+}
 @media (max-width: 770px) {
   #container {
     grid-template-columns: 1fr;

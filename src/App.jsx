@@ -11,6 +11,8 @@ import CompleteProfile from './components/CompleteProfile';
 import Members from './components/Members';
 import OtherProfile from './components/OtherProfile';
 import Apply from './components/Apply';
+import AdminPanel from './components/AdminPanel';
+import EditUser from './components/EditUser';
 const App = () => (
   <BrowserRouter>
     <div className="bg-primary w-full overflow-hidden">
@@ -31,6 +33,9 @@ const App = () => (
             <Route exact path="/completeProfile" element={<CompleteProfile />} />
             <Route exact path="/guild" element={<Guild />} />
             <Route exact path="/apply" element={<Apply/>} />
+            <Route exact path="/adminPanel" element={<AdminPanel/>} />
+            <Route path="/admin/edit/:id" element={<EditUser/>} />
+
           </Routes>
         </div>
       </div>

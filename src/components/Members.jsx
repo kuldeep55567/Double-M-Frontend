@@ -8,6 +8,7 @@ const Members = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [positionFilter, setPositionFilter] = useState('');
     const [roleFilter, setRoleFilter] = useState('');
+    const [total,setTotal]  = useState('');
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -31,6 +32,7 @@ const Members = () => {
                 console.log(url.toString());
                 const data = await response.json();
                 setUsers(data.data);
+                setTotal(data.total);
                 setTotalPages(Math.ceil(data.total / data.limit));
             } catch (error) {
                 console.error("Error fetching users data:", error);
@@ -46,12 +48,11 @@ const Members = () => {
 
     const handleNextPage = () => {
         if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-    };
-    
-    
-
+    };   
     return (
         <div className="p-4">
+<h2 className="text-white text-xl font-semibold mb-4 text-center">Total Members : {total}</h2>
+
             <div className="mb-4 flex flex-col sm:flex-row">
                 <input
                     type="text"
